@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.options import Options
 import time
 import requests
 from urllib.parse import quote
-
+import argparse
 
 
 def download(link:str,title:str):
@@ -55,5 +55,9 @@ def main(url:str):
 
 
 if __name__ == '__main__':
-    link = input('> ')
-    main(link)
+    parser = argparse.ArgumentParser(
+                    prog='ss-youtube-downloader',
+                    description='Terminal youtube dowbloader on python, using requests to "savefrom.net"')
+    parser.add_argument('-l', '--link',help='link on youtube video') 
+    
+    main(parser.parse_args().link)
